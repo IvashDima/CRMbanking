@@ -8,11 +8,11 @@ def create_user(username, password):
     #     print(e)
     user = User.select().where(User.username == username).limit(1)
     if len(user) >= 1:
-        print(f'User with username "{username}" exist!')
+        text = f'User with username "{username}" exist!'
     else:
         user = User(username=username, password=password).save()
-        print(f'User with username "{username}" successfully created!')
-
+        text = f'User with username "{username}" successfully created!'
+    return text
 
 class User(BaseModel):
     username = CharField(max_length=50)

@@ -8,6 +8,7 @@ from models.lead import *
 from models.contact import *
 from models.contract import *
 from models.product import *
+from models.action import *
 
 import datetime
 from peewee import *
@@ -15,19 +16,51 @@ from peewee import *
 
 # from models.action import *
 
-def print_hi(name):
-    print(f'Hi, {name}')
+def menu_operation(section):
+    while True:
+        action = UserAction.operation()
+        if action == '1':
+            if section == 'Contacts':
+                print("TBD")
+            elif section == 'Contracts':
+                print("TBD")
+            elif section == 'Users':
+                UserAction.operation_create_user()
+            else:
+                print("Incorrect section")
+        elif action == '2':
+            print("Get")
+        elif action == '9':
+            print("Go to Section")
+        elif action == '0':
+            print("Exit")
+            raise SystemExit
+        else:
+            print("Incorrect answer")
+def menu_section():
+    while True:
+        action = UserAction.section()
+        if action == '1':
+            menu_operation('Contacts')
+        elif action == '2':
+            menu_operation('Contracts')
+        elif action == '3':
+            menu_operation('Leads')
+        elif action == '4':
+            menu_operation('Users')
+        elif action == '5':
+            menu_operation('Products')
+        elif action == '0':
+            raise SystemExit
+        else:
+            print("Incorrect answer")
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print('Welcome to CRMBanking')
     # Core Functionality
-    # if UserAction.login_user() == True:
-    #     print("User is logged in")
-    #     action = UserAction.user_interface()
-        # if action == '1':
-            # Create contract
-        # elif action == '2':
-            # Delete Contract
+    if UserAction.login_user() == True:
+        menu_section()
+
     with DB:
     ## create_tables
         DB.create_tables([User, Lead, Contact, Contract, Product])
@@ -36,7 +69,6 @@ if __name__ == '__main__':
         # contact_id1 = input('Enter contact_id: ')
         # lead1 = Lead(amount=amount1,contact_id=contact_id1).save()
         # print(lead1)
-
 
         # username1 = input('Enter your name (username): ')
         # password1 = input('Enter password: ')
@@ -50,13 +82,6 @@ if __name__ == '__main__':
         #         print(user.username, user.password)
         #     else:
         #         print('User or password incorrect!')
-
-        ## create user
-        username1 = input('Enter username: ')
-        password1 = input('Enter password: ')
-
-        user1 = create_user(username=username1, password=password1)
-        print(user1)
 
     # insert_data
     # Dmytro = Contact(name='Dima').save()
