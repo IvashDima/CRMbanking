@@ -49,7 +49,10 @@ class UserAction:
         msgs = get_users()
         print("All users (Id, Created, Username, Password):")
         for msg in msgs:
-            print(msg.id, msg.created, msg.username, msg.password)
-
+            print(msg)
 
     #create contact
+    #get contacts
+
+    #create contract
+    #get contracts

@@ -46,10 +46,8 @@ def menu_operation(section):
             else:
                 print("Incorrect section")
         elif action == '9':
-            print("Go to Section")
             break
         elif action == '0':
-            print("Exit")
             raise SystemExit
         else:
             print("Incorrect answer")
