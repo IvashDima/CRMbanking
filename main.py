@@ -8,7 +8,7 @@ from models.lead import *
 from models.contact import *
 from models.contract import *
 from models.product import *
-from models.action import *
+from models.consol_action import *
 
 import datetime
 from peewee import *
@@ -24,14 +24,30 @@ def menu_operation(section):
                 print("TBD")
             elif section == 'Contracts':
                 print("TBD")
+            elif section == 'Leads':
+                print("TBD")
             elif section == 'Users':
                 UserAction.operation_create_user()
+            elif section == 'Products':
+                print("TBD")
             else:
                 print("Incorrect section")
         elif action == '2':
-            print("Get")
+            if section == 'Contacts':
+                print("TBD")
+            elif section == 'Contracts':
+                print("TBD")
+            elif section == 'Leads':
+                print("TBD")
+            elif section == 'Users':
+                UserAction.operation_get_user()
+            elif section == 'Products':
+                print("TBD")
+            else:
+                print("Incorrect section")
         elif action == '9':
             print("Go to Section")
+            break
         elif action == '0':
             print("Exit")
             raise SystemExit

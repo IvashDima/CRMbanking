@@ -14,6 +14,22 @@ def create_user(username, password):
         text = f'User with username "{username}" successfully created!'
     return text
 
+def get_users():
+    # try:
+    #     user = User.select().where(User.username == username).get()
+    # except (KeyError, NameError) as e:
+    #     print(e)
+    allusers = User.select()
+    if len(allusers) >= 1:
+        # for user in allusers:
+        #     list_allusers.append(user.id, user.username, user.password)
+        return allusers
+    else:
+        text = f'Users not found!'
+        return text
+
+
+
 class User(BaseModel):
     username = CharField(max_length=50)
     password = CharField(max_length=20)
