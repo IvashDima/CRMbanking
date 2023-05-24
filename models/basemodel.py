@@ -7,10 +7,11 @@ class BaseModel(Model):
     created = DateTimeField(default=datetime.datetime.now())
     # modified = DateTimeField(default=datetime.datetime.timestamp())
 
-    def __init__(self, id, created, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.created = created.strftime("%d.%m.%Y %H:%M:%S")
-        self.id = id
+        # self.id = id
+        # self.created = created.strftime("%d.%m.%Y %H:%M:%S")
+
 
     class Meta:
         database = DB

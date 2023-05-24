@@ -4,10 +4,10 @@ class Contact(BaseModel):
     name = CharField(max_length=50)
     email = CharField(max_length=20)
 
-    def __init__(self, name: str, email: str, id, created, *args, **kwargs):
-        super().__init__(id, created, *args, **kwargs)
-        self.email = email
-        self.name = name
+    # def __init__(self, name: str, email: str, id, created, *args, **kwargs):
+    #     super().__init__(id, created, *args, **kwargs)
+    #     self.email = email
+    #     self.name = name
 
     class Meta:
         db_table = 'contacts'
