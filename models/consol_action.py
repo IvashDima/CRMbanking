@@ -56,3 +56,9 @@ class UserAction:
 
     #create contract
     #get contracts
+
+    # create lead
+    # amount1 = input('Enter amount: ')
+    # contact_id1 = input('Enter contact_id: ')
+    # lead1 = Lead(amount=amount1,contact_id=contact_id1).save()
+    # print(lead1)
