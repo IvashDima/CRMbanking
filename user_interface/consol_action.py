@@ -1,4 +1,4 @@
-from models.user import *
+from models.user import create_user, get_users, User
 from models.contact import *
 from models.contract import *
 from models.lead import *

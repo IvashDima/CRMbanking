@@ -3,8 +3,48 @@
 # Press ⌃R to execute it or replace it with your code.
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 
-from models.consol_action import *
-from models.create_database import *
+from user_interface.consol_action import *
+from database.create_database import DB
+
+
+class Menu:
+    def menu(self, action):
+        while True:
+            action = UserAction.section()
+            if action == '1':
+                menu_operation('Contacts')
+            elif action == '2':
+                menu_operation('Contracts')
+            elif action == '3':
+                menu_operation('Leads')
+            elif action == '4':
+                menu_operation('Users')
+            elif action == '5':
+                menu_operation('Products')
+            elif action == '0':
+                raise SystemExit
+            else:
+                print("Incorrect answer")
+
+# class Section(Menu):
+def menu_sections(): #(self, action):
+    while True:
+        action = UserAction.section()
+        if action == '1':
+            menu_operation('Contacts')
+        elif action == '2':
+            menu_operation('Contracts')
+        elif action == '3':
+            menu_operation('Leads')
+        elif action == '4':
+            menu_operation('Users')
+        elif action == '5':
+            menu_operation('Products')
+        elif action == '0':
+            raise SystemExit
+        else:
+            print("Incorrect answer")
+
 
 def menu_operation(section):
     while True:
@@ -41,33 +81,16 @@ def menu_operation(section):
             raise SystemExit
         else:
             print("Incorrect answer")
-def menu_section():
-    while True:
-        action = UserAction.section()
-        if action == '1':
-            menu_operation('Contacts')
-        elif action == '2':
-            menu_operation('Contracts')
-        elif action == '3':
-            menu_operation('Leads')
-        elif action == '4':
-            menu_operation('Users')
-        elif action == '5':
-            menu_operation('Products')
-        elif action == '0':
-            raise SystemExit
-        else:
-            print("Incorrect answer")
+
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     # Core Functionality
     with DB:
-        ## create_tables
-        DB.create_tables([User, Lead, Contact, Contract, Product])
-
-    if UserAction.login_user() == True:
-        menu_section()
+        # create_tables
+        DB.create_tables([User, Lead, Contact, Contract, Product]) #create_db
+        if UserAction.login_user() == True:
+            menu_sections()
 
     ## insert_data
     # Dmytro = Contact(name='Dima').save()
