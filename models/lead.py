@@ -1,6 +1,7 @@
 from models.basemodel import *
 from models.contact import *
 
+
 class Lead(BaseModel):
     amount = FloatField()
     contact_id = ForeignKeyField(Contact)

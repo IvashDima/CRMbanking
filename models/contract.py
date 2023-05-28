@@ -2,6 +2,7 @@ from models.basemodel import *
 from models.contact import *
 from models.product import *
 
+
 class Contract(BaseModel):
     amount = FloatField()
     start_date = DateField()

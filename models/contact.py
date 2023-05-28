@@ -1,5 +1,6 @@
 from models.basemodel import *
 
+
 class Contact(BaseModel):
     name = CharField(max_length=50)
     email = CharField(max_length=20)

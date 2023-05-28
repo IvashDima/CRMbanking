@@ -1,11 +1,9 @@
-from faker import Faker
-
-from models.database import *
 from models.user import *
 from models.lead import *
-from models.contact import *
 from models.contract import *
 from models.product import *
+from database.database import DB
+
 
 def create_db(load_fake_data: bool = True):
 

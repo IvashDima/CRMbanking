@@ -1,5 +1,6 @@
 from models.basemodel import *
 
+
 class Product(BaseModel):
     name = CharField(max_length=100)
 

@@ -1,6 +1,7 @@
 import datetime
-from models.database import *
+from database.database import DB
 from peewee import *
+
 
 class BaseModel(Model):
     id = PrimaryKeyField(unique=True)
@@ -11,7 +12,6 @@ class BaseModel(Model):
         super().__init__(*args, **kwargs)
         # self.id = id
         # self.created = created.strftime("%d.%m.%Y %H:%M:%S")
-
 
     class Meta:
         database = DB
