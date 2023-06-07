@@ -6,7 +6,12 @@ def create_contact(name, email, age, gender):
     if len(contact) >= 1:
         text = f'Contact with name "{name}" exist!'
     else:
-        contact = Contact(name=name, email=email, age=age, gender=gender).save()
+        if gender == "f":
+            contact = Contact(name=name, email=email, age=age, gender=2).save()
+        elif gender == "m":
+            contact = Contact(name=name, email=email, age=age, gender=1).save()
+        else:
+            text = f'Incorrect data. Try again!'
         text = f'Contact with name "{name}" successfully created!'
     return text
 
@@ -22,6 +27,8 @@ def get_contact():
 
 class Gender(BaseModel):
     name = CharField()
+    male = "Male"
+    female = "Female"
 
     def __init__(self, name: str, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -37,9 +44,9 @@ class Contact(BaseModel):
     gender_id = ForeignKeyField(Gender)
     email = CharField(max_length=20)
 
-    def __init__(self, name: str, email: str, age: int, gender=Gender, *args, **kwargs):
+    def __init__(self, name: str, email: str, age: int, gender_id=Gender, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.gender = gender
+        self.gender_id = gender_id
         self.age = age
         self.email = email
         self.name = name

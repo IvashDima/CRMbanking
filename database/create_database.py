@@ -14,5 +14,5 @@ def create_db():
 
         # test data
         create_user(username='test', password='test')       # test user
-        gender_m = Gender(name='Male')
-        gender_f = Gender(name='Female')
+        gender_m = Gender(name='Male').save()
+        gender_f = Gender(name='Female').save()

@@ -59,14 +59,8 @@ class UserAction:
         email1 = input('Enter E-mail: ')
         age1 = input('Enter age: ')
         gender_answer = input('Enter gender (m - male, f - female): ')
-        while True:
-            if gender_answer == "f":
-                msg = create_contact(name=name1, email=email1, age=age1, gender=Gender.female)
-            elif gender_answer == "m":
-                msg = create_contact(name=name1, email=email1, age=age1, gender=Gender.male)
-            else:
-                msg = f'Incorrect data. Try again!'
-            return print(msg)
+        msg = create_contact(name=name1, email=email1, age=age1, gender=gender_answer)
+        return print(msg)
 
     @classmethod
     def operation_get_contact(cls):
