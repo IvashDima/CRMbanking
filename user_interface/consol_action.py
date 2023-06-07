@@ -48,9 +48,12 @@ class UserAction:
     @classmethod
     def operation_get_user(cls):
         msgs = get_users()
-        print("All users (Id, Created, Username, Password):")
-        for msg in msgs:
-            print(msg)
+        if isinstance(msgs, list):
+            print("All users (Id, Created, Username, Password):")
+            for msg in msgs:
+                print(msg)
+        else:
+            print(msgs)
 
     @classmethod
     def operation_create_contact(cls):
@@ -64,13 +67,15 @@ class UserAction:
 
     @classmethod
     def operation_get_contact(cls):
-        msgs = get_contact()
-        print("All contacts (Id, Created, Name, E-Mail, Age, Gender):")
-        for msg in msgs:
-            print(msg)
+        msgs = ()
+        if isinstance(msgs, list):
+            print("All contacts (Id, Created, Name, E-Mail, Age, Gender):")
+            for msg in msgs:
+                print(msg)
+        else:
+            print(msgs)
 
-    #create contact
-    #get contacts
+
 
     #create contract
     #get contracts
