@@ -17,7 +17,7 @@ def create_contact(name, email, age, gender):
 
 
 def get_contact():
-    contacts = Contact.select(Contact.id, Contact.created, Contact.name, Contact.email, Contact.age, Contact.gender)
+    contacts = Contact.select()
     if len(contacts) >= 1:
         return contacts
     else:
