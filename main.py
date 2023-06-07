@@ -4,12 +4,7 @@
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 
 from user_interface.consol_action import UserAction
-from database.create_database import DB
-from models.user import User, create_user
-from models.contact import Contact
-from models.contract import Contract
-from models.lead import Lead
-from models.product import Product
+from database.create_database import create_db
 
 
 def menu_main():
@@ -32,7 +27,7 @@ def menu_main():
             elif action == '1':
                 UserAction.operation_create_contact()
             elif action == '2':
-                print('TBD')
+                UserAction.operation_get_contact()
             elif action == '9':
                 break
             else:
@@ -73,10 +68,8 @@ def menu_main():
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     # Core Functionality
-    with DB:
-        # create_tables
-        DB.create_tables([User, Lead, Contact, Contract, Product])  # create_db
-        create_user(username='test', password='test')       # first test user
+    create_db()
+
     if UserAction.login_user():
         menu_main()
 

@@ -11,15 +11,30 @@ def create_contact(name, email, age, gender):
     return text
 
 
+def get_contact():
+    contacts = Contact.select(Contact.id, Contact.created, Contact.name, Contact.email, Contact.age, Contact.gender)
+    if len(contacts) >= 1:
+        return contacts
+    else:
+        text = f'Contacts not found!'
+        return text
+
+
 class Gender(BaseModel):
-    male = "Male"
-    female = "Female"
+    name = CharField()
+
+    def __init__(self, name: str, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.name = name
+
+    class Meta:
+        db_table = 'genders'
 
 
 class Contact(BaseModel):
     name = CharField(max_length=50)
     age = IntegerField()
-    gender = Gender
+    gender_id = ForeignKeyField(Gender)
     email = CharField(max_length=20)
 
     def __init__(self, name: str, email: str, age: int, gender=Gender, *args, **kwargs):

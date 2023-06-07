@@ -1,5 +1,5 @@
 from models.user import create_user, get_users, User
-from models.contact import create_contact, Gender
+from models.contact import create_contact, Gender, get_contact
 # from models.contract import *
 # from models.lead import *
 # from models.product import *
@@ -67,6 +67,13 @@ class UserAction:
             else:
                 msg = f'Incorrect data. Try again!'
             return print(msg)
+
+    @classmethod
+    def operation_get_contact(cls):
+        msgs = get_contact()
+        print("All contacts (Id, Created, Name, E-Mail, Age, Gender):")
+        for msg in msgs:
+            print(msg)
 
     #create contact
     #get contacts
