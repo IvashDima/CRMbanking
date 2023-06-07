@@ -3,86 +3,57 @@
 # Press ⌃R to execute it or replace it with your code.
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 
-from user_interface.consol_action import *
+from user_interface.consol_action import UserAction
 from database.create_database import DB
+from models.user import User
+from models.contact import Contact
+from models.contract import Contract
+from models.lead import Lead
+from models.product import Product
 
-# test changes
 
-class Menu:
-    def menu(self, action):
+def menu():
+
+    def menu_operation(section):
         while True:
-            action = UserAction.section()
-            if action == '1':
-                menu_operation('Contacts')
-            elif action == '2':
-                menu_operation('Contracts')
-            elif action == '3':
-                menu_operation('Leads')
-            elif action == '4':
-                menu_operation('Users')
-            elif action == '5':
-                menu_operation('Products')
-            elif action == '0':
+            action = UserAction.operation()
+            if action == '0':
                 raise SystemExit
+            elif action == '9':
+                break
             else:
-                print("Incorrect answer")
+                print("Incorrect operation")
 
+    def menu_user():
+        while True:
+            action = UserAction.operation()
+            if action == '0':
+                raise SystemExit
+            elif action == '1':
+                UserAction.operation_create_user()
+            elif action == '2':
+                UserAction.operation_get_user()
+            elif action == '9':
+                break
+            else:
+                print("Incorrect operation")
 
-# class Section(Menu):
-def menu_sections():    # (self, action):
     while True:
         action = UserAction.section()
-        if action == '1':
+        if action == '0':
+            raise SystemExit
+        elif action == '1':
             menu_operation('Contacts')
         elif action == '2':
             menu_operation('Contracts')
         elif action == '3':
             menu_operation('Leads')
-        elif action == '4':
-            menu_operation('Users')
+        elif action == '4': # Users
+            menu_user()
         elif action == '5':
             menu_operation('Products')
-        elif action == '0':
-            raise SystemExit
         else:
-            print("Incorrect answer")
-
-
-def menu_operation(section):
-    while True:
-        action = UserAction.operation()
-        if action == '1':
-            if section == 'Contacts':
-                print("TBD")
-            elif section == 'Contracts':
-                print("TBD")
-            elif section == 'Leads':
-                print("TBD")
-            elif section == 'Users':
-                UserAction.operation_create_user()
-            elif section == 'Products':
-                print("TBD")
-            else:
-                print("Incorrect section")
-        elif action == '2':
-            if section == 'Contacts':
-                print("TBD")
-            elif section == 'Contracts':
-                print("TBD")
-            elif section == 'Leads':
-                print("TBD")
-            elif section == 'Users':
-                UserAction.operation_get_user()
-            elif section == 'Products':
-                print("TBD")
-            else:
-                print("Incorrect section")
-        elif action == '9':
-            break
-        elif action == '0':
-            raise SystemExit
-        else:
-            print("Incorrect answer")
+            print("Incorrect section")
 
 
 # Press the green button in the gutter to run the script.
@@ -90,9 +61,9 @@ if __name__ == '__main__':
     # Core Functionality
     with DB:
         # create_tables
-        DB.create_tables([User, Lead, Contact, Contract, Product]) # create_db
-        if UserAction.login_user() == True:
-            menu_sections()
+        DB.create_tables([User, Lead, Contact, Contract, Product])  # create_db
+    if UserAction.login_user() == True:
+        menu()
 
     # insert_data
     # Dmytro = Contact(name='Dima').save()
@@ -119,6 +90,6 @@ if __name__ == '__main__':
 #     print(type(contracts))
 #     for cont in contracts:
 #         print(cont.amount, cont.start_date, cont.contact_id.name)
-    print('DONE')
+    print('End of program')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

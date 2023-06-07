@@ -17,9 +17,9 @@ def create_user(username, password):
 
 # noinspection LanguageDetectionInspection
 def get_users():
-    allusers = User.select()
-    if len(allusers) >= 1:
-        return allusers
+    users = User.select()
+    if len(users) >= 1:
+        return users
     else:
         text = f'Users not found!'
         return text
