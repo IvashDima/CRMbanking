@@ -12,9 +12,9 @@ from models.lead import Lead
 from models.product import Product
 
 
-def menu():
+def menu_main(action):
 
-    def menu_operation(section):
+    def menu_operation():
         while True:
             action = UserAction.operation()
             if action == '0':
@@ -42,16 +42,16 @@ def menu():
         action = UserAction.section()
         if action == '0':
             raise SystemExit
-        elif action == '1':
-            menu_operation('Contacts')
-        elif action == '2':
-            menu_operation('Contracts')
-        elif action == '3':
-            menu_operation('Leads')
-        elif action == '4': # Users
+        elif action == '1':     # Contacts
+            menu_operation()
+        elif action == '2':     # Contracts
+            menu_operation()
+        elif action == '3':     # Leads
+            menu_operation()
+        elif action == '4':     # Users
             menu_user()
-        elif action == '5':
-            menu_operation('Products')
+        elif action == '5':     # Products
+            menu_operation()
         else:
             print("Incorrect section")
 
@@ -62,8 +62,8 @@ if __name__ == '__main__':
     with DB:
         # create_tables
         DB.create_tables([User, Lead, Contact, Contract, Product])  # create_db
-    if UserAction.login_user() == True:
-        menu()
+    if UserAction.login_user():
+        menu_main()
 
     # insert_data
     # Dmytro = Contact(name='Dima').save()
