@@ -1,5 +1,6 @@
 from models.basemodel import *
 
+
 def create_user(username, password):
     # try:
     #     user = User.select().where(User.username == username).get()

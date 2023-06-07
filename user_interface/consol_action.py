@@ -4,6 +4,7 @@ from models.contract import *
 from models.lead import *
 from models.product import *
 
+
 class UserAction:
     @classmethod
     def login_user(cls):

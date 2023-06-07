@@ -7,6 +7,7 @@ from user_interface.consol_action import *
 from database.create_database import DB
 
 
+
 class Menu:
     def menu(self, action):
         while True:
@@ -26,8 +27,9 @@ class Menu:
             else:
                 print("Incorrect answer")
 
+
 # class Section(Menu):
-def menu_sections(): #(self, action):
+def menu_sections():    # (self, action):
     while True:
         action = UserAction.section()
         if action == '1':
@@ -88,35 +90,35 @@ if __name__ == '__main__':
     # Core Functionality
     with DB:
         # create_tables
-        DB.create_tables([User, Lead, Contact, Contract, Product]) #create_db
+        DB.create_tables([User, Lead, Contact, Contract, Product]) # create_db
         if UserAction.login_user() == True:
             menu_sections()
 
-    ## insert_data
+    # insert_data
     # Dmytro = Contact(name='Dima').save()
     # Iryna = Contact.create(name='Ira')
     # Pavlo = Contact.insert(name='Pasha').save()
     # contacts = Contact.select()
-        ## insert_many
+        # insert_many
         # contracts = [
         #     Contact{'amount'=13, 'start_date'=datetime.date(2023,5,13), 'contact_id':contacts[0]},
         #     {'amount':14, 'start_date':datetime.date(2023,5,14), 'contact_id':contacts[1]},
         # ]
         # Contract.insert_many(contracts).execute()
-    ## select
+    # select
     # contacts = Contact.select().where(Contact.id == 2)
     # print(contacts[0])
-        ## get
+        # get
         # contacts = Contact.get(Contact.id == 2)
         # print(contacts.id, contacts.name)
-    ## join
-    # allcontracts = Contract.select().join(Contact).where(Contact.id == 2)
-#     allcontracts = Contract.select().where(Contract.contact_id == 2)
-#     print(len(allcontracts))
-#     print(allcontracts)
-#     print(type(allcontracts))
-#     for contr in allcontracts:
-#         print(contr.amount, contr.start_date, contr.contact_id.name)
+    # join
+    # contracts = Contract.select().join(Contact).where(Contact.id == 2)
+#     contracts = Contract.select().where(Contract.contact_id == 2)
+#     print(len(contracts))
+#     print(contracts)
+#     print(type(contracts))
+#     for cont in contracts:
+#         print(cont.amount, cont.start_date, cont.contact_id.name)
     print('DONE')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
