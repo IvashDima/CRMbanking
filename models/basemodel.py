@@ -5,13 +5,11 @@ from peewee import *
 
 class BaseModel(Model):
     id = PrimaryKeyField(unique=True)
-    created = DateTimeField(default=datetime.datetime.now())
+    created = DateTimeField(default=datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S"))
     # modified = DateTimeField(default=datetime.datetime.timestamp())
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # self.id = id
-        # self.created = created.strftime("%d.%m.%Y %H:%M:%S")
 
     class Meta:
         database = DB

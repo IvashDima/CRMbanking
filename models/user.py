@@ -2,10 +2,6 @@ from models.basemodel import *
 
 
 def create_user(username, password):
-    # try:
-    #     user = User.select().where(User.username == username).get()
-    # except (KeyError, NameError) as e:
-    #     print(e)
     user = User.select().where(User.username == username).limit(1)
     if len(user) >= 1:
         text = f'User with username "{username}" exist!'

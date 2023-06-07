@@ -5,20 +5,34 @@
 
 from user_interface.consol_action import UserAction
 from database.create_database import DB
-from models.user import User
+from models.user import User, create_user
 from models.contact import Contact
 from models.contract import Contract
 from models.lead import Lead
 from models.product import Product
 
 
-def menu_main(action):
+def menu_main():
 
     def menu_operation():
         while True:
             action = UserAction.operation()
             if action == '0':
                 raise SystemExit
+            elif action == '9':
+                break
+            else:
+                print("Incorrect operation")
+
+    def menu_contact():
+        while True:
+            action = UserAction.operation()
+            if action == '0':
+                raise SystemExit
+            elif action == '1':
+                UserAction.operation_create_contact()
+            elif action == '2':
+                print('TBD')
             elif action == '9':
                 break
             else:
@@ -43,7 +57,7 @@ def menu_main(action):
         if action == '0':
             raise SystemExit
         elif action == '1':     # Contacts
-            menu_operation()
+            menu_contact()
         elif action == '2':     # Contracts
             menu_operation()
         elif action == '3':     # Leads
@@ -62,6 +76,7 @@ if __name__ == '__main__':
     with DB:
         # create_tables
         DB.create_tables([User, Lead, Contact, Contract, Product])  # create_db
+        create_user(username='test', password='test')       # first test user
     if UserAction.login_user():
         menu_main()
 

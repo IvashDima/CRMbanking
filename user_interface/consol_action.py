@@ -1,8 +1,8 @@
 from models.user import create_user, get_users, User
-from models.contact import *
-from models.contract import *
-from models.lead import *
-from models.product import *
+from models.contact import create_contact, Gender
+# from models.contract import *
+# from models.lead import *
+# from models.product import *
 
 
 class UserAction:
@@ -51,6 +51,22 @@ class UserAction:
         print("All users (Id, Created, Username, Password):")
         for msg in msgs:
             print(msg)
+
+    @classmethod
+    def operation_create_contact(cls):
+        msg = ''
+        name1 = input('Enter name: ')
+        email1 = input('Enter E-mail: ')
+        age1 = input('Enter age: ')
+        gender_answer = input('Enter gender (m - male, f - female): ')
+        while True:
+            if gender_answer == "f":
+                msg = create_contact(name=name1, email=email1, age=age1, gender=Gender.female)
+            elif gender_answer == "m":
+                msg = create_contact(name=name1, email=email1, age=age1, gender=Gender.male)
+            else:
+                msg = f'Incorrect data. Try again!'
+            return print(msg)
 
     #create contact
     #get contacts
