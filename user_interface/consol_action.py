@@ -34,7 +34,7 @@ class UserAction:
     @classmethod
     def operation(cls):
         print("Choose operation!")
-        action = input(f"1 - Create, 2 - Get, 3 - Import from file, 4 - Export in file, 5 - Sign, "
+        action = input(f"1 - Create, 2 - Get info, 3 - Import from file, 4 - Export in file, 5 - Sign, "
                        f"9 - Go to Section, 0 - Exit: ")
         return action
 
@@ -67,7 +67,7 @@ class UserAction:
 
     @classmethod
     def operation_get_contact(cls):
-        msgs = ()
+        msgs = get_contact()
         if isinstance(msgs, list):
             print("All contacts (Id, Created, Name, E-Mail, Age, Gender):")
             for msg in msgs:

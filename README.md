@@ -22,11 +22,11 @@ pip install --requirement requirements.txt
 
 Run 'Main'.
 In Python console:
-1. Enter username and password (user1/1).
+1. Enter username and password (test/test).
 2. Choose section!
 	1 - Contacts, 2 - Contracts, 3 - Leads, 4 - Users, 5 - Products, 0 - Exit
 3. Choose operation!
-	1 - Create, 2 - Get, 3 - Import from file, 4 - Export in file, 5 - Sign, 9 - Go to Section, 0 - Exit
+	1 - Create, 2 - Get info, 3 - Import from file, 4 - Export in file, 5 - Sign, 9 - Go to Section, 0 - Exit
 
 ## Support
 
