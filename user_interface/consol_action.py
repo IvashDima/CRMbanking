@@ -1,5 +1,8 @@
 from models.user import create_user, get_users, User
-from models.contact import create_contact, Gender, get_contact
+from models.contact import create_contact, get_contact
+
+from file_io.file_import import import_contact
+
 # from models.contract import *
 # from models.lead import *
 # from models.product import *
@@ -75,6 +78,20 @@ class UserAction:
         else:
             print(msgs)
 
+    @classmethod
+    def operation_import_contact(cls):
+        msg = ''
+        print("To import contacts data need to enter a file path (a list of directory names concatenated by a directory separator) and a file name.")
+        print("Format: '*.csv'. Example: ")
+        print("Linux, MacOS:    /home/peter/PycharmProjects/data_file.csv")
+        print("Windows:    C:\Documents\Peter\PycharmProjects\data_file.csv")
+        print("Structure inside file: ")
+        print("Header: 'name, email, age, gender'")
+        print("Line1: 'Dmytro, d@x.com, 30, m'")
+        print("Line1: 'Olga, o@x.com, 35, f'")
+        file1 = input('Enter a file path: ')
+        msg = import_contact(file_name=file1)
+        return print(msg)
 
 
     #create contract

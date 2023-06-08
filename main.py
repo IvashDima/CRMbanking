@@ -28,6 +28,8 @@ def menu_main():
                 UserAction.operation_create_contact()
             elif action == '2':
                 UserAction.operation_get_contact()
+            elif action == '3':
+                UserAction.operation_import_contact()
             elif action == '9':
                 break
             else:
