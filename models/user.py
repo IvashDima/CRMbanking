@@ -15,7 +15,10 @@ def create_user(username, password):
 def get_users():
     users = User.select()
     if len(users) >= 1:
-        return users
+        text = []
+        for user in users:
+            text.append(user)
+        return text
     else:
         text = f'Users not found!'
         return text

@@ -22,7 +22,10 @@ def create_contact(name, email, age, gender):
 def get_contact():
     contacts = Contact.select()     # (Contact.id, Contact.created, Contact.name, Contact.email, Contact.age, Contact.gender_id)
     if len(contacts) >= 1:
-        return contacts
+        text = []
+        for contact in contacts:
+            text.append(contact)
+        return text
     else:
         text = f'Contacts not found!'
         return text
@@ -42,7 +45,7 @@ class Contact(BaseModel):
         self.name = name
 
     def __str__(self):
-        return f"{self.id} {self.created} {self.name} {self.email} {self.age} {self.gender}"
+        return f"{self.id} {self.created} {self.name} {self.email} {self.age} {self.gender_id}"
 
     class Meta:
         db_table = 'contacts'
