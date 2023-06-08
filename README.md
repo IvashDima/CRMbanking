@@ -38,8 +38,8 @@ In Python console:
       5) Products.
       9 - Go to Section, 0 - Exit
 
-3. Run Pytest: TBD
-4. Show import log: TBD
+3. Show log: Log file is located in the root folder of the application with name: my_log_{currentdate}.log.
+4. Run Pytest: TBD
 
 ## Support
 
