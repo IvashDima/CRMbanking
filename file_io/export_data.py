@@ -1,9 +1,10 @@
 from models.contact import get_contact
-import datetime
+from src.date_format import currentdate_str
+from logs.config import logger
+
 
 def export_contact():
-    currentdate = str(datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S"))
-    file_name = f"contacts_data_{currentdate}.csv"
+    file_name = f"contacts_data_{currentdate_str}.csv"
     with open(file_name, "w") as file:
         msgs = get_contact()
         if isinstance(msgs, list):
@@ -12,6 +13,7 @@ def export_contact():
             for msg in msgs:
                 file.write(msg.name + "," + msg.email + "," + str(msg.age) + "," + msg.gender_id.name + "\n")
                 # print(msg)
+                logger.info("Exported row: " + str(msg))
             text = "Export completed!"
         else:
             # print(msgs)
