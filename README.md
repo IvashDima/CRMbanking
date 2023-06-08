@@ -23,10 +23,23 @@ pip install --requirement requirements.txt
 Run 'Main'.
 In Python console:
 1. Enter username and password (test/test).
-2. Choose section!
-	1 - Contacts, 2 - Contracts, 3 - Leads, 4 - Users, 5 - Products, 0 - Exit
-3. Choose operation!
-	1 - Create, 2 - Get info, 3 - Import from file, 4 - Export in file, 5 - Sign, 9 - Go to Section, 0 - Exit
+2. Follow the recommendations in Console:
+   1) Choose section! 
+   1 - Contacts, 2 - Contracts, 3 - Leads, 4 - Users, 5 - Products, 0 - Exit
+   2) Choose operation in section: 
+      1) Contacts.
+      1 - Create, 2 - Get info, 3 - Import from file, 9 - Go to Section, 0 - Exit
+      2) Contracts.
+      9 - Go to Section, 0 - Exit
+      3) Leads.
+      9 - Go to Section, 0 - Exit
+      4) Users.
+      1 - Create, 2 - Get info, 9 - Go to Section, 0 - Exit
+      5) Products.
+      9 - Go to Section, 0 - Exit
+
+3. Run Pytest:
+4. Show import log:
 
 ## Support
 

@@ -1,7 +1,8 @@
 from models.user import create_user, get_users, User
 from models.contact import create_contact, get_contact
 
-from file_io.file_import import import_contact
+from file_io.import_data import import_contact
+from file_io.export_data import export_contact
 
 # from models.contract import *
 # from models.lead import *
@@ -93,6 +94,12 @@ class UserAction:
         msg = import_contact(file_name=file1)
         return print(msg)
 
+    @classmethod
+    def operation_export_contact(cls):
+        msg = ''
+        msg, file_name = export_contact()
+        print(msg)
+        return print(f"Exported file is located in the root folder of the application with name: {file_name}.")
 
     #create contract
     #get contracts

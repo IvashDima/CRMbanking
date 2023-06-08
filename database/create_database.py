@@ -6,8 +6,8 @@ from models.contract import Contract
 from models.product import Product
 from database.database import DB
 
-def create_db():
 
+def create_db():
     with DB:
         # create_tables
         DB.create_tables([User, Lead, Contact, Contract, Product, Gender])  # create_db

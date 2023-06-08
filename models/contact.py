@@ -45,7 +45,7 @@ class Contact(BaseModel):
         self.name = name
 
     def __str__(self):
-        return f"{self.id} {self.created} {self.name} {self.email} {self.age} {self.gender_id}"
+        return f"{self.id} {self.created} {self.name} {self.email} {self.age} {self.gender_id.name}"
 
     class Meta:
         db_table = 'contacts'
