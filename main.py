@@ -9,9 +9,9 @@ from database.create_database import create_db
 
 def menu_main():
 
-    def menu_operation():
+    def menu_base_operation(section):
         while True:
-            action = UserAction.operation()
+            action = UserAction.operation(section)
             if action == '0':
                 raise SystemExit
             elif action == '9':
@@ -21,7 +21,7 @@ def menu_main():
 
     def menu_contact():
         while True:
-            action = UserAction.operation()
+            action = UserAction.operation('Contacts')
             if action == '0':
                 raise SystemExit
             elif action == '1':
@@ -39,7 +39,7 @@ def menu_main():
 
     def menu_user():
         while True:
-            action = UserAction.operation()
+            action = UserAction.operation('Users')
             if action == '0':
                 raise SystemExit
             elif action == '1':
@@ -52,19 +52,19 @@ def menu_main():
                 print("Incorrect operation")
 
     while True:
-        action = UserAction.section()
+        action = UserAction.section('Admin')
         if action == '0':
             raise SystemExit
-        elif action == '1':     # Contacts
+        elif action == '1':
             menu_contact()
-        elif action == '2':     # Contracts
-            menu_operation()
-        elif action == '3':     # Leads
-            menu_operation()
-        elif action == '4':     # Users
+        elif action == '2':     # TBD Contracts
+            menu_base_operation('Contracts')
+        elif action == '3':     # TBD Leads
+            menu_base_operation('Leads')
+        elif action == '4':
             menu_user()
-        elif action == '5':     # Products
-            menu_operation()
+        elif action == '5':     # TBD Products
+            menu_base_operation('Products')
         else:
             print("Incorrect section")
 

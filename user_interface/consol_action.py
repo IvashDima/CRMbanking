@@ -1,12 +1,13 @@
 from models.user import create_user, get_users, User
 from models.contact import create_contact, get_contact
+# from models.contract import *
+# from models.lead import *
+# from models.product import *
 
 from file_io.import_data import import_contact
 from file_io.export_data import export_contact
 
-# from models.contract import *
-# from models.lead import *
-# from models.product import *
+from logs.config import logger
 
 
 class UserAction:
@@ -22,7 +23,7 @@ class UserAction:
         if user.username == username1:
             if user.password == password1:
                 print('Hi, ', username1)
-                print("User is logged in")  # LOG start session
+                logger.info(f"User {username1} is logged in")
                 return True
             else:
                 print('User or password incorrect!')
@@ -30,16 +31,33 @@ class UserAction:
         return False
 
     @classmethod
-    def section(cls):
+    def section(cls, user_role):
+        section_config = {
+            'Admin': {1: 'Contacts', 2: 'Contracts', 3: 'Leads', 4: 'Users', 5: 'Products', 0: 'Exit'},
+            'Manager': {1: 'Contacts', 2: 'Contracts', 3: 'Leads', 5: 'Products', 0: 'Exit'},
+        }
+        section = section_config[user_role]
         print("Choose section!")
-        action = input("1 - Contacts, 2 - Contracts, 3 - Leads, 4 - Users, 5 - Products, 0 - Exit: ")
+        for point, option in section.items():
+            print(f"{point} - {option}")
+        action = input(f"Your choose: ")
         return action
 
     @classmethod
-    def operation(cls):
+    def operation(cls, section):
+        operation_config = {
+            'Contacts': {1: 'Create contact', 2: 'Get Info', 3: 'Import from file', 4: 'Export in file',
+                         9: 'Go to Section', 0: 'Exit'},
+            'Contracts': {9: 'Go to Section', 0: 'Exit'},
+            'Leads': {9: 'Go to Section', 0: 'Exit'},
+            'Users': {1: 'Create contact', 2: 'Get Info', 9: 'Go to Section', 0: 'Exit'},
+            'Products': {9: 'Go to Section', 0: 'Exit'}
+        }
+        operation = operation_config[section]
         print("Choose operation!")
-        action = input(f"1 - Create, 2 - Get info, 3 - Import from file, 4 - Export in file, 5 - Sign, "
-                       f"9 - Go to Section, 0 - Exit: ")
+        for point, option in operation.items():
+            print(f"{point} - {option}")
+        action = input(f"Your choose: ")
         return action
 
     @classmethod
@@ -82,7 +100,8 @@ class UserAction:
     @classmethod
     def operation_import_contact(cls):
         msg = ''
-        print("To import contacts data need to enter a file path (a list of directory names concatenated by a directory separator) and a file name.")
+        print("To import contacts data need to enter a file path (a list of directory names concatenated "
+              "by a directory separator) and a file name.")
         print("Format: '*.csv'. Example: ")
         print("Linux, MacOS:    /home/peter/PycharmProjects/data_file.csv")
         print("Windows:    C:\Documents\Peter\PycharmProjects\data_file.csv")
