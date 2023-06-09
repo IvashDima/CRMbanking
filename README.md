@@ -30,7 +30,7 @@ In Python console:
       1) Contacts.
       1 - Create, 2 - Get info, 3 - Import from file, 4 - Export to file, 9 - Go to Section, 0 - Exit
       2) Contracts.
-      9 - Go to Section, 0 - Exit
+      1 - Create, 2 - Get info, 9 - Go to Section, 0 - Exit
       3) Leads.
       9 - Go to Section, 0 - Exit
       4) Users.
@@ -38,8 +38,12 @@ In Python console:
       5) Products.
       9 - Go to Section, 0 - Exit
 
-3. Show log: Log file is located in the root folder of the application with name: my_log_{currentdate}.log.
-4. Run Pytest: TBD
+3. There is possible to check the age and gender by the name of the contact. 
+It automatically works when creating a contract. Or manually need to run functions: 
+checks/public_data/get_age_by_name
+checks/public_data/get_gender_by_name
+4. Show log: Log file is located in the root folder of the application with name: my_log_{currentdate}.log.
+5. Run Pytest: TBD
 
 ## Support
 
