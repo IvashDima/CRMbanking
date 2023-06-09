@@ -5,6 +5,29 @@ from logs.config import logger
 from src.errors.api_errors import UNAUTHERIZED, PAYMENT_REQUIRED, UNPROCESSABLE_ENTITY, TOO_MANY_REQUESTS
 
 
+def error_handling(error_code, text_for_logger):
+    if 400 <= error_code <= 499:
+        if error_code == 401:
+            text = UNAUTHERIZED
+            logger.error(f"{text_for_logger} {UNAUTHERIZED}")
+        elif error_code == 402:
+            text = PAYMENT_REQUIRED
+            logger.error(f"{text_for_logger} {PAYMENT_REQUIRED}")
+        elif error_code == 422:
+            text = UNPROCESSABLE_ENTITY
+            logger.error(f"{text_for_logger} {UNPROCESSABLE_ENTITY}")
+        elif error_code == 429:
+            text = TOO_MANY_REQUESTS
+            logger.error(f"{text_for_logger} {TOO_MANY_REQUESTS}")
+        else:
+            text = f"Error: {error_code}"
+            logger.error(f"{text_for_logger} {text}")
+    else:
+        text = f"Other error: {error_code}"
+        logger.error(f"{text_for_logger} {text}")
+    return text
+
+
 class AgeByName:
     def __init__(self, name, age, count):
         self.name = name
@@ -24,25 +47,8 @@ def get_age_by_name(income_name):
         logger.info(f"{for_logger} returned: {received_data}.")
         age1 = AgeByName(name=received_data["name"], age=received_data["age"], count=received_data["count"])
         text = f"Check age: {income_name}'s average age is {age1.age}."
-    elif 400 <= response.status_code <= 499:
-        if response.status_code == 401:
-            text = UNAUTHERIZED
-            logger.error(f"{for_logger} {UNAUTHERIZED}")
-        elif response.status_code == 402:
-            text = PAYMENT_REQUIRED
-            logger.error(f"{for_logger} {PAYMENT_REQUIRED}")
-        elif response.status_code == 422:
-            text = UNPROCESSABLE_ENTITY
-            logger.error(f"{for_logger} {UNPROCESSABLE_ENTITY}")
-        elif response.status_code == 429:
-            text = TOO_MANY_REQUESTS
-            logger.error(f"{for_logger} {TOO_MANY_REQUESTS}")
-        else:
-            text = f"Error: {response.status_code}"
-            logger.error(f"{for_logger} Error: {response.status_code} ")
     else:
-        text = f"Other error: {response.status_code}"
-        logger.error(f"{for_logger} Other error: {response.status_code} ")
+        text = error_handling(response.status_code, for_logger)
     return text
 
 
@@ -67,23 +73,10 @@ def get_gender_by_name(income_name):
         gender1 = GenderByName(name=received_data["name"], gender=received_data["gender"],
                                probability=received_data["probability"], count=received_data["count"])
         text = f"Check gender: {income_name}'s gender is '{gender1.gender}' with probability = {gender1.probability}"
-    elif 400 <= response.status_code <= 499:
-        if response.status_code == 401:
-            text = UNAUTHERIZED
-            logger.error(f"{for_logger} {UNAUTHERIZED}")
-        elif response.status_code == 402:
-            text = PAYMENT_REQUIRED
-            logger.error(f"{for_logger} {PAYMENT_REQUIRED}")
-        elif response.status_code == 422:
-            text = UNPROCESSABLE_ENTITY
-            logger.error(f"{for_logger} {UNPROCESSABLE_ENTITY}")
-        elif response.status_code == 429:
-            text = TOO_MANY_REQUESTS
-            logger.error(f"{for_logger} {TOO_MANY_REQUESTS}")
-        else:
-            text = f"Error: {response.status_code}"
-            logger.error(f"{for_logger} Error: {response.status_code} ")
     else:
-        text = f"Other error: {response.status_code}"
-        logger.error(f"{for_logger} Other error: {response.status_code} ")
+        text = error_handling(response.status_code, for_logger)
     return text
+
+
+print(get_gender_by_name('Katya'))
+print(get_age_by_name('Katya'))
