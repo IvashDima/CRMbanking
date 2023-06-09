@@ -8,7 +8,6 @@ from database.create_database import create_db
 from database.create_data import create_base_data
 
 
-
 def menu_main():
 
     def menu_base_operation(section):

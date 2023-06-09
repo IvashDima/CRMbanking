@@ -6,9 +6,6 @@ from database.database import DB
 male = 'Male'
 female = 'Female'
 
-# gender_m = ()
-# gender_f = ()
-
 loan = 'Loan'
 deposit = 'Deposit'
 
@@ -34,3 +31,9 @@ def create_base_data():
         if len(deposit_product) == 0:
             deposit_product = Product(name=deposit).save()
     return gender_m, gender_f, loan_product, deposit_product
+
+
+gender_m = Gender.select().where(Gender.name == male).limit(1)
+gender_f = Gender.select().where(Gender.name == female).limit(1)
+loan_product = Product.select().where(Product.name == loan).limit(1)
+deposit_product = Product.select().where(Product.name == deposit).limit(1)

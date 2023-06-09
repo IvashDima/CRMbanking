@@ -8,8 +8,10 @@ from checks.public_data.data_by_name import get_gender_by_name, get_age_by_name
 
 
 def create_contract(amount, contact_id, product_id):
-    # get_age_by_name('Dima')
-    # get_gender_by_name('Dima')
+    contacts = Contact.select().where(Contact.id == contact_id).limit(1)
+    for contact in contacts:
+        print(get_age_by_name(contact.name))
+        print(get_gender_by_name(contact.name))
     contract = Contract.select().where(Contract.contact_id == contact_id and
                                        Contract.product_id == product_id).limit(1)
     if len(contract) >= 1:

@@ -78,5 +78,5 @@ def get_gender_by_name(income_name):
     return text
 
 
-print(get_gender_by_name('Katya'))
-print(get_age_by_name('Katya'))
+# print(get_gender_by_name('Katya'))
+# print(get_age_by_name('Katya'))
