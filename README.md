@@ -22,7 +22,7 @@ pip install --requirement requirements.txt
 
 Run 'Main'.
 In Python console:
-1. Enter username and password (test/test).
+1. Enter username and password. For the first login use test/test. Only logged users can create new users.
 2. Follow the recommendations in Console:
    1) Choose section! 
    1 - Contacts, 2 - Contracts, 3 - Leads, 4 - Users, 5 - Products, 0 - Exit
