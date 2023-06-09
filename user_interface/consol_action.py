@@ -1,6 +1,6 @@
 from models.user import create_user, get_users, User
 from models.contact import create_contact, get_contact
-# from models.contract import *
+from models.contract import create_contract, get_contract
 # from models.lead import *
 # from models.product import *
 
@@ -14,16 +14,16 @@ class UserAction:
     @classmethod
     def login_user(cls):
         print('Welcome to CRMBanking')
-        username1 = input('Enter your name (username): ')
-        password1 = input('Enter password: ')
-        allusers = User.select().where(User.username == username1).limit(1)
+        username_in = input('Enter your name (username): ')
+        password_in = input('Enter password: ')
+        allusers = User.select().where(User.username == username_in).limit(1)
         if len(allusers) != 1:
             print("User or password incorrect!")
         user = allusers[0]
-        if user.username == username1:
-            if user.password == password1:
-                print('Hi, ', username1)
-                logger.info(f"User {username1} is logged in")
+        if user.username == username_in:
+            if user.password == password_in:
+                print('Hi, ', username_in)
+                logger.info(f"User {username_in} is logged in")
                 return True
             else:
                 print('User or password incorrect!')
@@ -48,7 +48,7 @@ class UserAction:
         operation_config = {
             'Contacts': {1: 'Create contact', 2: 'Get Info', 3: 'Import from file', 4: 'Export in file',
                          9: 'Go to Section', 0: 'Exit'},
-            'Contracts': {9: 'Go to Section', 0: 'Exit'},
+            'Contracts': {1: 'Create contract', 2: 'Get Info', 9: 'Go to Section', 0: 'Exit'},
             'Leads': {9: 'Go to Section', 0: 'Exit'},
             'Users': {1: 'Create contact', 2: 'Get Info', 9: 'Go to Section', 0: 'Exit'},
             'Products': {9: 'Go to Section', 0: 'Exit'}
@@ -62,9 +62,9 @@ class UserAction:
 
     @classmethod
     def operation_create_user(cls):
-        username1 = input('Enter username: ')
-        password1 = input('Enter password: ')
-        msg = create_user(username=username1, password=password1)
+        username_in = input('Enter username: ')
+        password_in = input('Enter password: ')
+        msg = create_user(username=username_in, password=password_in)
         return print(msg)
 
     @classmethod
@@ -80,11 +80,11 @@ class UserAction:
     @classmethod
     def operation_create_contact(cls):
         msg = ''
-        name1 = input('Enter name: ')
-        email1 = input('Enter E-mail: ')
-        age1 = input('Enter age: ')
-        gender_answer = input('Enter gender (m - male, f - female): ')
-        msg = create_contact(name=name1, email=email1, age=age1, gender=gender_answer)
+        name_in = input('Enter name: ')
+        email_in = input('Enter E-mail: ')
+        age_in = input('Enter age: ')
+        gender_answer_in = input('Enter gender (m - male, f - female): ')
+        msg = create_contact(name=name_in, email=email_in, age=age_in, gender=gender_answer_in)
         return print(msg)
 
     @classmethod
@@ -109,8 +109,8 @@ class UserAction:
         print("Header: 'name, email, age, gender'")
         print("Line1: 'Dmytro, d@x.com, 30, m'")
         print("Line1: 'Olga, o@x.com, 35, f'")
-        file1 = input('Enter a file path: ')
-        msg = import_contact(file_name=file1)
+        file_name_in = input('Enter a file path: ')
+        msg = import_contact(file_name=file_name_in)
         return print(msg)
 
     @classmethod
@@ -120,8 +120,25 @@ class UserAction:
         print(msg)
         return print(f"Exported file is located in the root folder of the application with name: {file_name}.")
 
-    #create contract
-    #get contracts
+    @classmethod
+    def operation_create_contract(cls):
+        msg = ''
+        amount_in = input('Enter amount of contract: ')
+        contact_id_in = input('Enter contact_id: ')
+        product_id_in = input('Enter product_id (1 - Loan, 2 - Deposit): ')
+        msg = create_contract(amount=amount_in, contact_id=contact_id_in, product_id=product_id_in)
+        return print(msg)
+
+    @classmethod
+    def operation_get_contract(cls):
+        msgs = get_contract()
+        if isinstance(msgs, list):
+            print("All contracts (Id, Created, Amount, Start date, Contact, Product):")
+            for msg in msgs:
+                print(msg)
+        else:
+            print(msgs)
+
 
     # create lead
     # amount1 = input('Enter amount: ')

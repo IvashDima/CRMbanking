@@ -1,7 +1,7 @@
 from models.basemodel import *
 from models.gender import Gender
 
-from database.create_data import gender_m, gender_f
+# from database.create_data import gender_m, gender_f
 
 
 def create_contact(name, email, age, gender):
@@ -10,9 +10,9 @@ def create_contact(name, email, age, gender):
         text = f'Contact with name "{name}" exist!'
     else:
         if gender == "f":
-            contact = Contact(name=name, email=email, age=age, gender_id=gender_f).save()
+            contact = Contact(name=name, email=email, age=age, gender_id=Gender.id(1)).save()
         elif gender == "m":
-            contact = Contact(name=name, email=email, age=age, gender_id=gender_m).save()
+            contact = Contact(name=name, email=email, age=age, gender_id=Gender.id(0)).save()
         else:
             text = f'Incorrect data. Try again!'
         text = f'Contact with name "{name}" successfully created!'

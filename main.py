@@ -5,6 +5,8 @@
 
 from user_interface.consol_action import UserAction
 from database.create_database import create_db
+from database.create_data import create_base_data
+
 
 
 def menu_main():
@@ -14,6 +16,20 @@ def menu_main():
             action = UserAction.operation(section)
             if action == '0':
                 raise SystemExit
+            elif action == '9':
+                break
+            else:
+                print("Incorrect operation")
+
+    def menu_contract():
+        while True:
+            action = UserAction.operation('Contracts')
+            if action == '0':
+                raise SystemExit
+            elif action == '1':
+                UserAction.operation_create_contract()
+            elif action == '2':
+                UserAction.operation_get_contract()
             elif action == '9':
                 break
             else:
@@ -57,8 +73,8 @@ def menu_main():
             raise SystemExit
         elif action == '1':
             menu_contact()
-        elif action == '2':     # TBD Contracts
-            menu_base_operation('Contracts')
+        elif action == '2':
+            menu_contract()
         elif action == '3':     # TBD Leads
             menu_base_operation('Leads')
         elif action == '4':
@@ -73,6 +89,7 @@ def menu_main():
 if __name__ == '__main__':
     # Core Functionality
     create_db()
+    create_base_data()
 
     if UserAction.login_user():
         menu_main()

@@ -1,10 +1,10 @@
 from models.contact import get_contact
-from src.date_format import currentdate_str
+from src.date_format import currentdatetime_str
 from logs.config import logger
 
 
 def export_contact():
-    file_name = f"contacts_data_{currentdate_str}.csv"
+    file_name = f"contacts_data_{currentdatetime_str}.csv"
     with open(file_name, "w") as file:
         msgs = get_contact()
         if isinstance(msgs, list):

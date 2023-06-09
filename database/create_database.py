@@ -10,4 +10,4 @@ from database.database import DB
 def create_db():
     with DB:
         # create_tables
-        DB.create_tables([User, Lead, Contact, Contract, Product, Gender])  # create_db
+        DB.create_tables([User, Lead, Contact, Contract, Product, Gender])
