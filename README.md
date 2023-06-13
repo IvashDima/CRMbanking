@@ -4,11 +4,14 @@ CRM banking is a CRM system for financial companies, which helps to hold clients
 
 Description:
 
-CRM banking is a CRM system for financial companies, which helps to:
-- hold clients' databases,
+CRM banking is a CRM system helps to:
+- manage users
+- hold contact's databases,
 - propose financial products,
-- create leads,
-- make a contract, when the interest grown to agreeing of client to make a deal.
+- create contacts,
+- import & export contact's data from/in the CSV-file
+- check contacts via external API
+- create contracts, when the interest grown to agreeing of client to make a deal.
 
 ## Installation
 
